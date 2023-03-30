@@ -33,7 +33,7 @@ def assort() -> InlineKeyboardMarkup:
     # chiz = InlineKeyboardButton(text='Чизкейки', callback_data='ass_chiz')
     # desert = InlineKeyboardButton(text='Десерты', callback_data='ass_desert')
     back = InlineKeyboardButton(text="Назад ↩️", callback_data='back_pod_menu')
-    asort.add(kb_torty, tortybent, makaron, back)
+    asort.insert(kb_torty).add(tortybent, makaron, back)
     return asort
 
 
@@ -140,3 +140,7 @@ class zakaz:
     # btn_back = InlineKeyboardButton(text='Назад ↩️', callback_data='back_kb_czizkek')
     # self.kb_zakaz.add(btn1, btn_back)
     # return self.kb_zakaz
+
+
+def chizkek():
+    return None

@@ -1,4 +1,5 @@
 import sqlite3 as sql
+
 from create_bot import bot
 
 
@@ -93,28 +94,28 @@ class bentorty_bd:
 
     async def sql_read_bentorty1(self):
         for x in cur.execute(f"SELECT * FROM bent WHERE id = 1").fetchall():
-            await bot.send_photo(self.from_user.id, x[4], f'{x[0]}\nОписание: {x[1]}\nЦена: {x[2]}zl\n')
+            await bot.send_message(self.from_user.id, f'Описание:\n{x[1]}\n\nЦена: {x[2]} zl\n')
             base.commit()
 
     async def sql_read_bentorty2(self):
         string = f"SELECT * FROM bent WHERE id = 2"
         for x in cur.execute(string).fetchall():
-            await bot.send_photo(self.from_user.id, x[4], f'{x[1]}\n\nЦена: {x[2]}zl')
+            await bot.send_message(self.from_user.id, f'Описание:\n{x[1]}\n\nЦена: {x[2]} zl\n')
             base.commit()
 
     async def sql_read_bentorty3(self):
         for x in cur.execute(f"SELECT * FROM bent WHERE id = 3").fetchall():
-            await bot.send_message(self.from_user.id, f'{x[0]}\nОписание: {x[1]}\nЦена: {x[2]}zl\n')
+            await bot.send_message(self.from_user.id, f'Описание:\n{x[1]}\n\nЦена: {x[2]} zl\n')
             base.commit()
 
     async def sql_read_bentorty4(self):
         for x in cur.execute(f"SELECT * FROM bent WHERE id = 4").fetchall():
-            await bot.send_message(self.from_user.id, f'{x[0]}\nОписание: {x[1]}\nЦена: {x[2]}zl\n')
+            await bot.send_message(self.from_user.id, f'Описание:\n{x[1]}\n\nЦена: {x[2]} zl\n')
             base.commit()
 
     async def sql_read_bentorty5(self):
         for x in cur.execute(f"SELECT * FROM bent WHERE id = 5").fetchall():
-            await bot.send_message(self.from_user.id, f'{x[0]}\nОписание: {x[1]}\nЦена: {x[2]}zl\n')
+            await bot.send_message(self.from_user.id, f'Описание:\n{x[1]}\n\nЦена: {x[2]} zl\n')
             base.commit()
 
 

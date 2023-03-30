@@ -14,7 +14,6 @@ async def send_welcome(message: types.Message):
                            reply_markup=menu.start_menu())
 
 
-# Декоратор Инфо
 async def admin():
     pass
 
