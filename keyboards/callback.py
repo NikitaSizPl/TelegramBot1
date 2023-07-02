@@ -6,65 +6,36 @@ from data_base import sql
 from keyboards import menu
 
 
-async def pod_menu(call: CallbackQuery):
-    await call.message.edit_reply_markup(reply_markup=menu.pod_menu())
-
-
-async def free_data(call: CallbackQuery):
-    await bot.delete_message(call.from_user.id, call.message.message_id)
-    await call.message.answer(text="Данный раздел находится в разработке.", reply_markup=menu.free_data())
-
-
-async def ass_menu(call: CallbackQuery):
-    await call.message.edit_reply_markup(reply_markup=menu.assort())
-
-
-async def assort(call: CallbackQuery) -> None:
-    if call.data == 'ass_torty':
-        await call.message.edit_reply_markup(reply_markup=menu.kb_torty())
-    elif call.data == 'ass_bento':
-        await call.message.edit_reply_markup(reply_markup=menu.bento_torty())
-    elif call.data == 'ass_makaron':
-        await call.message.edit_reply_markup(reply_markup=menu.makarony())
-    # elif call.data == 'ass_desert':
-    # await call.message.edit_reply_markup(reply_markup=menu.deserty())
-    elif call.data == 'ass_chiz':
-        await call.message.edit_reply_markup(reply_markup=menu.chizkek())
+async def call_start_lang(call: CallbackQuery) -> None:
+    if call.data == 'lang_btn_rus':
+        await call.message.edit_reply_markup(reply_markup=menu.language_assort.pod_menu_rus(call))
+    elif call.data == 'lang_btn_ukr':
+        await call.message.edit_reply_markup(reply_markup=menu.language_assort.pod_menu_ukr(call))
+    elif call.data == 'lang_btn_pl':
+        await call.message.edit_reply_markup(reply_markup=menu.language_assort.pod_menu_pl(call))
+    elif call.data == 'lang_btn_eng':
+        await call.message.edit_reply_markup(reply_markup=menu.language_assort.pod_menu_eng(call))
     else:
         await call.message.edit_reply_markup(reply_markup=None)
 
 
 async def cancel_back(call: CallbackQuery) -> None:
-    if call.data == 'back_cancel':
-        await call.message.delete()
-        await call.message.edit_reply_markup(reply_markup=None)
-    elif call.data == 'back_menu':
-        await call.message.edit_reply_markup(reply_markup=menu.start_menu())
-    elif call.data == 'back_pod_menu':
-        # await bot.delete_message(call.from_user.id, call.message.message_id)
-        await call.message.edit_reply_markup(reply_markup=menu.pod_menu())
-    elif call.data == 'back_assort':
-        await call.message.edit_reply_markup(reply_markup=menu.assort())
-    elif call.data == 'back_kb_torty':
-        # await bot.delete_chat_photo(call.from_user.id, call.message.message_id)
-        await call.message.edit_reply_markup(reply_markup=menu.kb_torty())
-    elif call.data == 'back_kb_bentorty':
-        # await bot.delete_message(call.from_user.id, call.message.message_id)
-        await call.message.edit_reply_markup(reply_markup=menu.bento_torty())
-    elif call.data == 'back_kb_makaron':
-        # await bot.delete_chat_photo(call.message.message_id)
-        # await bot.delete_message(call.from_user.id, call.message.message_id)
-        await call.message.edit_reply_markup(reply_markup=menu.makarony())
-    elif call.data == 'back_kb_czizkek':
-        # await bot.send_photo(call.from_user.id, call.message.message_id)
-        # await bot.delete_message(call.from_user.id, call.message.message_id)
-        await call.message.edit_reply_markup(reply_markup=menu.chizkek())
+    if call.data == 'back_lang_menu':
+        await call.message.edit_reply_markup(reply_markup=menu.start_lang())
+    elif call.data == 'back_assort_rus':
+        await call.message.edit_reply_markup(reply_markup=menu.language_assort.pod_menu_rus(call))
+    elif call.data == 'back_assort_ukr':
+        await call.message.edit_reply_markup(reply_markup=menu.language_assort.pod_menu_ukr(call))
+    elif call.data == 'back_assort_pl':
+        await call.message.edit_reply_markup(reply_markup=menu.language_assort.pod_menu_pl(call))
+    elif call.data == 'back_assort_eng':
+        await call.message.edit_reply_markup(reply_markup=menu.language_assort.pod_menu_eng(call))
 
 
-async def assort_torty(call: CallbackQuery) -> None:
+async def cakes_rus(call: CallbackQuery) -> None:
     if call.data == 'tor_Snick':
-        await bot.delete_message(call.from_user.id, call.message.message_id)
-        await sql.torty_bd.sql_read_torty1(call)
+        #await bot.delete_message(call.from_user.id, call.message.message_id)
+        await sql.cakes_sql.sql_read_cakes(call)
         # bot.send_message(message.from_user.id)
         await call.message.answer(text=f"Ассортимент тортов", reply_markup=menu.zakaz.zakaz_torty(call))
     elif call.data == 'tor_Truskawka':
@@ -154,43 +125,7 @@ async def assort_bentorty(call: CallbackQuery) -> None:
         await call.message.answer(text='Ассортимент бенто тортов', reply_markup=menu.zakaz.zakaz_bentorty(call))
 
 
-async def makarony(call: CallbackQuery) -> None:
-    if call.data == 'mak_makaron':
-        await bot.delete_message(call.from_user.id, call.message.message_id)
-        await sql.makaron_bd.sql_read_makaron1(call)
-        await call.message.answer(text='Ассортимент макарон', reply_markup=menu.zakaz.zakaz_makaron(call))
-    elif call.data == 'mak_tort':
-        await bot.delete_message(call.from_user.id, call.message.message_id)
-        await sql.makaron_bd.sql_read_makaron2(call)
-        await call.message.answer(text='Ассортимент макарон', reply_markup=menu.zakaz.zakaz_makaron(call))
-
-
-# async def czizkek(call: CallbackQuery) -> None:
-# if call.data == 'Меню':
-# await bot.delete_message(call.from_user.id, call.message.message_id)
-# await sql.czizkek_bd.sql_read_czizkek1(call)
-# await call.message.answer(text='Меню', reply_markup=menu.zakaz.zakaz_czizkek(call))
-# elif call.data == 'cziz_Czekoladowy':
-# await bot.delete_message(call.from_user.id, call.message.message_id)
-# await sql.czizkek_bd.sql_read_czizkek2(call)
-# await call.message.answer(text='Меню', reply_markup=menu.zakaz.zakaz_czizkek(call))
-# elif call.data == 'cziz_Malina':
-# await bot.delete_message(call.from_user.id, call.message.message_id)
-# await sql.czizkek_bd.sql_read_czizkek3(call)
-# await call.message.answer(text='Меню', reply_markup=menu.zakaz.zakaz_czizkek(call))
-# elif call.data == 'cziz_Gruszka':
-# await bot.delete_message(call.from_user.id, call.message.message_id)
-# await sql.czizkek_bd.sql_read_czizkek4(call)
-# await call.message.answer(text='Меню', reply_markup=menu.zakaz.zakaz_czizkek(call))
-
 
 def register_callback(dp: Dispatcher):
-    dp.register_callback_query_handler(pod_menu, text='pod_menu')
-    dp.register_callback_query_handler(ass_menu, text='assort')
-    dp.register_callback_query_handler(free_data, text='freedata')
-    dp.register_callback_query_handler(assort, lambda callback_query: callback_query.data.startswith('ass'))
+    dp.register_callback_query_handler(call_start_lang, lambda callback_query: callback_query.data.startswith('lang'))
     dp.register_callback_query_handler(cancel_back, lambda callback_query: callback_query.data.startswith('back'))
-    dp.register_callback_query_handler(assort_torty, lambda callback_query: callback_query.data.startswith('tor'))
-    dp.register_callback_query_handler(assort_bentorty, lambda callback_query: callback_query.data.startswith('ben'))
-    dp.register_callback_query_handler(makarony, lambda callback_query: callback_query.data.startswith('mak'))
-    # dp.register_callback_query_handler(czizkek, lambda callback_query: callback_query.data.startswith('cziz'))

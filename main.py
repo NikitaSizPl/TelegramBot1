@@ -7,13 +7,21 @@ async def on_startup(_):
     print("Запустился")
 
     from data_base import sql
-    sql.sql_start()
+    sql.sql_connect()
 
     from handlers import client
     from keyboards import callback
+    from keyboards import callback_rus
+    from keyboards import callback_ukr
+    from keyboards import callback_pl
+    from keyboards import callback_eng
 
     client.register_handler_client(dp)
     callback.register_callback(dp)
+    callback_rus.register_callback(dp)
+    callback_ukr.register_callback(dp)
+    callback_pl.register_callback(dp)
+    callback_eng.register_callback(dp)
 
 
 # Запуск бота
