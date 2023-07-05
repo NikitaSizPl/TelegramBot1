@@ -3,7 +3,7 @@ from dataclasses import dataclass
 
 @dataclass
 class Config:
-    token: str = '6274332819:AAHeNiFR4E17ZaFWlYl-f39GUlzoarrzFYM'
+    token: str = '6312567122:AAGJqx3FetjCEPjByaPerGYIyzsH-nsbG1o'
     pay_token: str = ''
     admin: int = None
 
