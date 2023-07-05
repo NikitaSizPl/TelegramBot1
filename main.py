@@ -7,7 +7,7 @@ async def on_startup(_):
     print("Запустился")
 
     from data_base import sql
-    #sql.sql_connect()
+    sql.sql_connect()
 
     from handlers import client
     from keyboards import callback

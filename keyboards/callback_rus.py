@@ -100,8 +100,10 @@ async def mak_rus_assort(call: CallbackQuery) -> None:
 
 
 def register_callback(dp: Dispatcher):
-    dp.register_callback_query_handler(rus_assort, lambda callback_query: callback_query.data.startswith('rus'))
-    dp.register_callback_query_handler(tort_rus_assort, lambda callback_query: callback_query.data.startswith('trus'))
+    dp.register_callback_query_handler(rus_assort,
+                                       lambda callback_query: callback_query.data.startswith('rus'))
+    dp.register_callback_query_handler(tort_rus_assort,
+                                       lambda callback_query: callback_query.data.startswith('trus'))
     dp.register_callback_query_handler(bento_tort_rus_assort,
                                        lambda callback_query: callback_query.data.startswith('brus'))
     dp.register_callback_query_handler(mak_rus_assort,
