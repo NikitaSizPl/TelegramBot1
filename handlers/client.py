@@ -1,6 +1,9 @@
 from aiogram import types, Dispatcher
+from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+
 from create_bot import bot
 from keyboards import menu
+from data_base import sql
 
 
 # Декоратор Старт
@@ -13,16 +16,10 @@ async def send_welcome(message: types.Message):
                                                  f"Для продовження виберіть мову\n\n"
                                                  f"Aby kontynuować, wybierz język\n\n"
                                                  f"To continue, select the language\n\n",
+
                            reply_markup=menu.start_lang())
-    # await bot.send_message(message.from_user.id, f"Привет, {user_name}!\nПеред тобой Plaisir_Bot.\n\nОт "
-    # f"https://www.instagram.com/plaisir_lublin/ 👩🏼‍🍳",
-
-
-async def admin():
-    pass
 
 
 # Регистратор декораторов в main.py
 def register_handler_client(dp: Dispatcher):
     dp.register_message_handler(send_welcome, commands=['start'])
-    dp.register_message_handler(admin, commands=['admin'])

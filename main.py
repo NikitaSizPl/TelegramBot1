@@ -8,8 +8,13 @@ async def on_startup(_):
 
     from data_base import sql
     sql.sql_connect()
+    sql.get_rus_cakes()
+    sql.get_rus_bent()
+    sql.get_rus_mak()
+
 
     from handlers import client
+    from handlers import admin
     from keyboards import callback
     from keyboards import callback_rus
     from keyboards import callback_ukr
@@ -17,6 +22,7 @@ async def on_startup(_):
     from keyboards import callback_eng
 
     client.register_handler_client(dp)
+    admin.register_handler_client(dp)
     callback.register_callback(dp)
     callback_rus.register_callback(dp)
     callback_ukr.register_callback(dp)

@@ -1,4 +1,5 @@
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from data_base import sql
 
 
 def start_lang() -> InlineKeyboardMarkup:
@@ -53,52 +54,12 @@ class language_assort:
         # desert = InlineKeyboardButton(text='Десерты', callback_data='ass_desert')
         back = InlineKeyboardButton(text="Back ↩️", callback_data='back_lang_menu')
         self.kb_language.insert(kb_torty).add(tortybent, makaron, back)
-        return self.kb_language
+        return self.kb_languag
 
 
 class language_assort_torty:
     def __init__(self):
         self.btn_assort_torty = None
-
-    def torty_assort_rus(self) -> InlineKeyboardMarkup:
-        self.btn_assort_torty = InlineKeyboardMarkup(row_width=1)
-        bttn1 = InlineKeyboardButton(text='Сникерс', callback_data='trus_Snick')
-        bttn2 = InlineKeyboardButton(text='Клубника в сливках', callback_data='trus_Truskawka')
-        bttn3 = InlineKeyboardButton(text='Банан - соленая карамель - орех', callback_data='trus_Banan')
-        bttn5 = InlineKeyboardButton(text='Шоколад вишня', callback_data='trus_Czekol')
-        bttn6 = InlineKeyboardButton(text='Йогрут черная смородина', callback_data='trus_Jogurt')
-        bttn8 = InlineKeyboardButton(text='Фисташка малина', callback_data='trus_fistaszka')
-        bttn9 = InlineKeyboardButton(text='Орео', callback_data='trus_Oreo')
-        bttn10 = InlineKeyboardButton(text='Банановый', callback_data='trus_banan')
-        bttn11 = InlineKeyboardButton(text='Марковный с апельсином', callback_data='trus_Marchewka')
-        bttn12 = InlineKeyboardButton(text='Банан - карамель - грецкий орех', callback_data='trus_Banan-karmel')
-        bttn13 = InlineKeyboardButton(text='Груша Dor-Blue', callback_data='trus_Gruszka-dor')
-        bttn14 = InlineKeyboardButton(text='Медовик', callback_data='trus_Miodownik')
-        bttn_back = InlineKeyboardButton(text='Назад ↩️', callback_data='back_assort_rus')
-        self.btn_assort_torty.add(bttn1, bttn2, bttn3, bttn5, bttn6,  bttn8, bttn9, bttn10, bttn11, bttn12, bttn13,
-                                  bttn14, bttn_back)
-        return self.btn_assort_torty
-
-    def torty_assort_ukr(self) -> InlineKeyboardMarkup:
-        self.btn_assort_torty = InlineKeyboardMarkup(row_width=1)
-        bttn1 = InlineKeyboardButton(text='Снікерс', callback_data='tor_Snick')
-        bttn2 = InlineKeyboardButton(text='Полуниця в вершках', callback_data='tor_Truskawka')
-        bttn3 = InlineKeyboardButton(text='Банан-солона карамель - орех', callback_data='tor_Banan')
-        bttn5 = InlineKeyboardButton(text='Шоколад вишня', callback_data='tor_Czekol')
-        bttn6 = InlineKeyboardButton(text='Йогурт чорна смородина', callback_data='tor_Jogurt')
-        bttn8 = InlineKeyboardButton(text='Фісташка малина', callback_data='tor_fistaszka')
-        bttn9 = InlineKeyboardButton(text='Орео', callback_data='tor_Oreo')
-        bttn10 = InlineKeyboardButton(text='Банановый', callback_data='tor_banan')
-        bttn11 = InlineKeyboardButton(text='Морквяний з апельсином', callback_data='tor_Marchewka')
-        bttn12 = InlineKeyboardButton(text='Банан-карамель-волоський горіх', callback_data='tor_Banan-karmel')
-        bttn13 = InlineKeyboardButton(text='Груша Dor-Blue', callback_data='tor_Gruszka-dor')
-        bttn14 = InlineKeyboardButton(text='Медівник', callback_data='tor_Miodownik')
-        bttn_back = InlineKeyboardButton(text='Назад ↩️', callback_data='back_assort_ukr')
-        self.btn_assort_torty.add(bttn1, bttn2, bttn3, bttn5, bttn6, bttn8, bttn9, bttn10, bttn11, bttn12,
-                                  bttn13,
-                                  bttn14,
-                                  bttn_back)
-        return self.btn_assort_torty
 
     def torty_assort_pl(self) -> InlineKeyboardMarkup:
         self.btn_assort_torty = InlineKeyboardMarkup(row_width=1)
@@ -147,28 +108,6 @@ class language_assort_bentotorty:
     def __init__(self):
         self.btn_assort_bentotorty = None
 
-    def bento_torty_rus(self) -> InlineKeyboardMarkup:
-        self.btn_assort_bentotorty = InlineKeyboardMarkup(row_width=1)
-        btn1 = InlineKeyboardButton(text='Ванильная клубника', callback_data='brus_Wanilia')
-        btn2 = InlineKeyboardButton(text='Шоколад вишня', callback_data='brus_Czekolada')
-        btn3 = InlineKeyboardButton(text='Банан карамель', callback_data='brus_Karamel')
-        btn4 = InlineKeyboardButton(text='Банан - соленая карамель - орех', callback_data='brus_Orzeszki')
-        btn5 = InlineKeyboardButton(text='Белый шоколад голубика', callback_data='brus_Biala')
-        btn_back = InlineKeyboardButton(text='Назад ↩️', callback_data='back_assort_rus')
-        self.btn_assort_bentotorty.add(btn1, btn2, btn3, btn4, btn5, btn_back)
-        return self.btn_assort_bentotorty
-
-    def bento_torty_ukr(self) -> InlineKeyboardMarkup:
-        self.btn_assort_bentotorty = InlineKeyboardMarkup(row_width=1)
-        btn1 = InlineKeyboardButton(text='Ванільна полуниця', callback_data='bukr_Wanilia')
-        btn2 = InlineKeyboardButton(text='Шоколад вишня', callback_data='bukr_Czekolada')
-        btn3 = InlineKeyboardButton(text='Банан карамель', callback_data='bukr_Karamel')
-        btn4 = InlineKeyboardButton(text='Банан-солона карамель-горіх', callback_data='bukr_Orzeszki')
-        btn5 = InlineKeyboardButton(text='Білий шоколад лохина', callback_data='bukr_Biala')
-        btn_back = InlineKeyboardButton(text='Назад ↩️', callback_data='back_assort_ukr')
-        self.btn_assort_bentotorty.add(btn1, btn2, btn3, btn4, btn5, btn_back)
-        return self.btn_assort_bentotorty
-
     def bento_torty_pl(self) -> InlineKeyboardMarkup:
         self.btn_assort_bentotorty = InlineKeyboardMarkup(row_width=1)
         btn1 = InlineKeyboardButton(text='Truskawka waniliowa', callback_data='bpl_Wanilia')
@@ -195,54 +134,6 @@ class language_assort_bentotorty:
 class language_assort_makarony:
     def __init__(self):
         self.btn_assort_makarony = None
-
-    def makarony_rus(self) -> InlineKeyboardMarkup:
-        self.btn_assort_makarony = InlineKeyboardMarkup(row_width=1)
-        bttn1 = InlineKeyboardButton(text='Snickers', callback_data='mrus_Snick')
-        bttn2 = InlineKeyboardButton(text='Ferrero', callback_data='mrus_Ferrero')
-        bttn3 = InlineKeyboardButton(text='Bounty', callback_data='mrus_Bounty')
-        bttn4 = InlineKeyboardButton(text='Raffaello', callback_data='mrus_Raffaello')
-        bttn5 = InlineKeyboardButton(text='Двойная соленая карамель', callback_data='mrus_Double_karam')
-        bttn6 = InlineKeyboardButton(text='Capuccino - Baileys', callback_data='mrus_Capuccino_Baileys')
-        bttn7 = InlineKeyboardButton(text='Лавандовый Raf', callback_data='mrus_Raf')
-        bttn8 = InlineKeyboardButton(text='Груша - Dor Blue', callback_data='mrus_DorBlue')
-        bttn9 = InlineKeyboardButton(text='Шоколадный медовик с вишней', callback_data='mrus_Szkolad_wisznia')
-        bttn10 = InlineKeyboardButton(text='Лаванда персик', callback_data='mrus_Lavanda_pers')
-        bttn11 = InlineKeyboardButton(text='Чизкейк - голубика', callback_data='mrus_Chiz_golub')
-        bttn12 = InlineKeyboardButton(text='Клубника милкшейк', callback_data='mrus_Klubnika_szejk')
-        bttn13 = InlineKeyboardButton(text='Лайм - клубника', callback_data='mrus_Laim_klubnika')
-        bttn14 = InlineKeyboardButton(text='Шоколад банан', callback_data='mrus_Szokolad_banan')
-        bttn15 = InlineKeyboardButton(text='Фисташка вишня', callback_data='mrus_Fistaszka')
-        bttn16 = InlineKeyboardButton(text='Пломбир - манго & маракуйя', callback_data='mrus_Plombir')
-        bttn17 = InlineKeyboardButton(text='Лимон курд', callback_data='mrus_Limon')
-        bttn_back = InlineKeyboardButton(text='Назад ↩️', callback_data='back_assort_rus')
-        self.btn_assort_makarony.add(bttn1, bttn2, bttn3, bttn4, bttn5, bttn6, bttn7, bttn8, bttn9, bttn10, bttn11,
-                                     bttn12, bttn13, bttn14, bttn15, bttn16, bttn17, bttn_back)
-        return self.btn_assort_makarony
-
-    def makarony_ukr(self) -> InlineKeyboardMarkup:
-        self.btn_assort_makarony = InlineKeyboardMarkup(row_width=1)
-        bttn1 = InlineKeyboardButton(text='Snickers', callback_data='mukr_Snick')
-        bttn2 = InlineKeyboardButton(text='Ferrero', callback_data='mukr_Ferrero')
-        bttn3 = InlineKeyboardButton(text='Bounty', callback_data='mukr_Bounty')
-        bttn4 = InlineKeyboardButton(text='Raffaello', callback_data='mukr_Raffaello')
-        bttn5 = InlineKeyboardButton(text='Подвійна солона карамель', callback_data='mukr_Double_karam')
-        bttn6 = InlineKeyboardButton(text='Capuccino - Baileys', callback_data='mukr_Capuccino_Baileys')
-        bttn7 = InlineKeyboardButton(text='Лавандовий Raf', callback_data='mukr_Raf')
-        bttn8 = InlineKeyboardButton(text='Груша - Dor Blue', callback_data='mukr_DorBlue')
-        bttn9 = InlineKeyboardButton(text='Шоколадний медовик з вишнею', callback_data='mukr_Szkolad_wisznia')
-        bttn10 = InlineKeyboardButton(text='Лаванда персик', callback_data='mukr_Lavanda_pers')
-        bttn11 = InlineKeyboardButton(text='Чізкейк-лохина', callback_data='mukr_Chiz_golub')
-        bttn12 = InlineKeyboardButton(text='Полуниця Мілкшейк', callback_data='mukr_Klubnika_szejk')
-        bttn13 = InlineKeyboardButton(text='Лайм - полуниця', callback_data='mukr_Laim_klubnika')
-        bttn14 = InlineKeyboardButton(text='Шоколад банан', callback_data='mukr_Szokolad_banan')
-        bttn15 = InlineKeyboardButton(text='Фісташка вишня', callback_data='mukr_Fistaszka')
-        bttn16 = InlineKeyboardButton(text='Пломбір - манго & маракуйя', callback_data='mukr_Plombir')
-        bttn17 = InlineKeyboardButton(text='Лимон курд', callback_data='mukr_Limon')
-        bttn_back = InlineKeyboardButton(text='Назад ↩️', callback_data='back_assort_ukr')
-        self.btn_assort_makarony.add(bttn1, bttn2, bttn3, bttn4, bttn5, bttn6, bttn7, bttn8, bttn9, bttn10, bttn11,
-                                     bttn12, bttn13, bttn14, bttn15, bttn16, bttn17, bttn_back)
-        return self.btn_assort_makarony
 
     def makarony_pl(self) -> InlineKeyboardMarkup:
         self.btn_assort_makarony = InlineKeyboardMarkup(row_width=1)

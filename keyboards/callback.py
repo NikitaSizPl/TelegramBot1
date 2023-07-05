@@ -3,7 +3,7 @@ from aiogram.types import CallbackQuery
 
 from create_bot import bot
 from data_base import sql
-from keyboards import menu
+from keyboards import menu, menu_rus, menu_ukr
 
 
 
@@ -32,9 +32,9 @@ async def cancel_back(call: CallbackQuery) -> None:
     elif call.data == 'back_assort_eng':
         await call.message.edit_reply_markup(reply_markup=menu.language_assort.pod_menu_eng(call))
     elif call.data == 'back_torty_rus':
-        await call.message.edit_reply_markup(reply_markup=menu.language_assort_torty.torty_assort_rus(call))
+        await call.message.edit_reply_markup(reply_markup=menu_rus.torty_assort_rus())
     elif call.data == 'back_torty_ukr':
-        await call.message.edit_reply_markup(reply_markup=menu.language_assort_torty.torty_assort_ukr(call))
+        await call.message.edit_reply_markup(reply_markup=menu_ukr.torty_assort_ukr())
     elif call.data == 'back_torty_pl':
         await call.message.edit_reply_markup(reply_markup=menu.language_assort_torty.torty_assort_pl(call))
     elif call.data == 'back_torty_eng':

@@ -2,48 +2,27 @@ from aiogram import Dispatcher
 from aiogram.types import CallbackQuery
 
 from create_bot import bot
+from keyboards import menu_rus, zakaz
 from data_base import sql
-from keyboards import menu, zakaz
 
 
 async def rus_assort(call: CallbackQuery) -> None:
     if call.data == 'rus_ass_torty':
-        await call.message.edit_reply_markup(reply_markup=menu.language_assort_torty.torty_assort_rus(call))
+        await call.message.edit_reply_markup(reply_markup=menu_rus.torty_assort_rus())
     elif call.data == 'rus_ass_bento':
-        await call.message.edit_reply_markup(reply_markup=menu.language_assort_bentotorty.bento_torty_rus(call))
+        await call.message.edit_reply_markup(reply_markup=menu_rus.bent_assort_rus())
     elif call.data == 'rus_ass_makaron':
-        await call.message.edit_reply_markup(reply_markup=menu.language_assort_makarony.makarony_rus(call))
+        await call.message.edit_reply_markup(reply_markup=menu_rus.mak_assort_rus())
     else:
         await call.message.edit_reply_markup(reply_markup=None)
 
 
-async def tort_rus_assort(call: CallbackQuery) -> None:
-    if call.data == 'trus_Snick':
-        await call.message.edit_reply_markup(reply_markup=zakaz.language_zakaz.zakaz_rus(call))
-    elif call.data == 'trus_Truskawka':
-        await call.message.edit_reply_markup(reply_markup=zakaz.language_zakaz.zakaz_rus(call))
-    elif call.data == 'trus_Banan':
-        await call.message.edit_reply_markup(reply_markup=zakaz.language_zakaz.zakaz_rus(call))
-    elif call.data == 'trus_Czekol':
-        await call.message.edit_reply_markup(reply_markup=zakaz.language_zakaz.zakaz_rus(call))
-    elif call.data == 'trus_Jogurt':
-        await call.message.edit_reply_markup(reply_markup=zakaz.language_zakaz.zakaz_rus(call))
-    elif call.data == 'trus_fistaszka':
-        await call.message.edit_reply_markup(reply_markup=zakaz.language_zakaz.zakaz_rus(call))
-    elif call.data == 'trus_Oreo':
-        await call.message.edit_reply_markup(reply_markup=zakaz.language_zakaz.zakaz_rus(call))
-    elif call.data == 'trus_banan':
-        await call.message.edit_reply_markup(reply_markup=zakaz.language_zakaz.zakaz_rus(call))
-    elif call.data == 'trus_Marchewka':
-        await call.message.edit_reply_markup(reply_markup=zakaz.language_zakaz.zakaz_rus(call))
-    elif call.data == 'trus_Banan-karmel':
-        await call.message.edit_reply_markup(reply_markup=zakaz.language_zakaz.zakaz_rus(call))
-    elif call.data == 'trus_Gruszka-dor':
-        await call.message.edit_reply_markup(reply_markup=zakaz.language_zakaz.zakaz_rus(call))
-    elif call.data == 'trus_Miodownik':
-        await call.message.edit_reply_markup(reply_markup=zakaz.language_zakaz.zakaz_rus(call))
-    else:
-        await call.message.edit_reply_markup(reply_markup=None)
+async def cake_rus_assort(call: CallbackQuery):
+    await bot.answer_callback_query(call.id)
+    id = call.data.replace('tort_rus_', '')
+    cake = sql.get(id)
+    await bot.send_message(call.from_user.id, cake, reply_markup=zakaz.language_zakaz.zakaz_rus(call))
+
 
 async def bento_tort_rus_assort(call: CallbackQuery) -> None:
     if call.data == 'brus_Wanilia':
@@ -100,10 +79,11 @@ async def mak_rus_assort(call: CallbackQuery) -> None:
 
 
 def register_callback(dp: Dispatcher):
+    dp.register_callback_query_handler(cake_rus_assort,
+                                       lambda callback_query: callback_query.data.startswith('tort_rus_'))
     dp.register_callback_query_handler(rus_assort,
                                        lambda callback_query: callback_query.data.startswith('rus'))
-    dp.register_callback_query_handler(tort_rus_assort,
-                                       lambda callback_query: callback_query.data.startswith('trus'))
+
     dp.register_callback_query_handler(bento_tort_rus_assort,
                                        lambda callback_query: callback_query.data.startswith('brus'))
     dp.register_callback_query_handler(mak_rus_assort,
