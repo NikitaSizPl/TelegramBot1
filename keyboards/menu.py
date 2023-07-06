@@ -54,5 +54,4 @@ class language_assort:
         # desert = InlineKeyboardButton(text='Десерты', callback_data='ass_desert')
         back = InlineKeyboardButton(text="Back ↩️", callback_data='back_lang_menu')
         self.kb_language.insert(kb_torty).add(tortybent, makaron, back)
-        return self.kb_languag
-
+        return self.kb_language

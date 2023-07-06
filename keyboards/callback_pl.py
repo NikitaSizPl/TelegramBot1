@@ -1,16 +1,16 @@
 from aiogram import Dispatcher
 from aiogram.types import CallbackQuery
 
-from keyboards import menu, zakaz
+from keyboards import menu_pl, zakaz
 
 
 async def pl_assort(call: CallbackQuery) -> None:
     if call.data == 'pl_ass_torty':
-        await call.message.edit_reply_markup(reply_markup=menu.language_assort_torty.torty_assort_pl(call))
+        await call.message.edit_reply_markup(reply_markup=menu_pl.torty_assort_pl())
     elif call.data == 'pl_ass_bento':
-        await call.message.edit_reply_markup(reply_markup=menu.language_assort_bentotorty.bento_torty_pl(call))
+        await call.message.edit_reply_markup(reply_markup=menu_pl.bent_assort_pl())
     elif call.data == 'pl_ass_makaron':
-        await call.message.edit_reply_markup(reply_markup=menu.language_assort_makarony.makarony_pl(call))
+        await call.message.edit_reply_markup(reply_markup=menu_pl.mak_assortpl())
     else:
         await call.message.edit_reply_markup(reply_markup=None)
 
