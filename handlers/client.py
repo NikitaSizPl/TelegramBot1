@@ -1,9 +1,7 @@
 from aiogram import types, Dispatcher
-from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 from create_bot import bot
 from keyboards import menu
-from data_base import sql
 
 
 # Декоратор Старт

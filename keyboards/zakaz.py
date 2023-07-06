@@ -33,6 +33,20 @@ class language_zakaz:
         self.zakaz.add(btn_zakaz, btn_back)
         return self.zakaz
 
+    def bzakaz_ukr(self) -> InlineKeyboardMarkup:
+        self.zakaz = InlineKeyboardMarkup(row_width=1)
+        btn_zakaz = InlineKeyboardButton(text='Замовивши', callback_data='nn')
+        btn_back = InlineKeyboardButton(text='Назад ↩️', callback_data='back_btorty_ukr')
+        self.zakaz.add(btn_zakaz, btn_back)
+        return self.zakaz
+
+    def mzakaz_ukr(self) -> InlineKeyboardMarkup:
+        self.zakaz = InlineKeyboardMarkup(row_width=1)
+        btn_zakaz = InlineKeyboardButton(text='Замовивши', callback_data='nn')
+        btn_back = InlineKeyboardButton(text='Назад ↩️', callback_data='back_mak_ukr')
+        self.zakaz.add(btn_zakaz, btn_back)
+        return self.zakaz
+
     def zakaz_pl(self) -> InlineKeyboardMarkup:
         self.zakaz = InlineKeyboardMarkup(row_width=1)
         btn_zakaz = InlineKeyboardButton(text='Zamówić', callback_data='nn')

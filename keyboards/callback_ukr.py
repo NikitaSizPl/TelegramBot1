@@ -1,6 +1,8 @@
 from aiogram import Dispatcher
 from aiogram.types import CallbackQuery
 
+from create_bot import bot
+from data_base import sql
 from keyboards import menu_ukr, zakaz
 
 
@@ -15,72 +17,54 @@ async def ukr_assort(call: CallbackQuery) -> None:
         await call.message.edit_reply_markup(reply_markup=None)
 
 
-async def tort_rus_assort(call: CallbackQuery) -> None:
-    if call.data == 'tukr_Snick':
-        await call.message.edit_reply_markup(reply_markup=zakaz.language_zakaz.zakaz_ukr(call))
-    elif call.data == 'tukr_Truskawka':
-        await call.message.edit_reply_markup(reply_markup=zakaz.language_zakaz.zakaz_ukr(call))
-    elif call.data == 'tukr_Banan':
-        await call.message.edit_reply_markup(reply_markup=zakaz.language_zakaz.zakaz_ukr(call))
+async def torty_ukr_assort(call: CallbackQuery):
+    await bot.answer_callback_query(call.id)
+    id = call.data.replace('tort_ukr_', '')
+    result = sql.callback_cakes_ukr(id)
+    if result:
+        name = result[1],
+        description = result[3]
+        price = result[4]
+        text = f'''Описание:\n\n{description}\nЦена: {price}'''
+        await bot.send_message(call.from_user.id, text=text, reply_markup=zakaz.language_zakaz.zakaz_ukr(call))
     else:
-        await call.message.edit_reply_markup(reply_markup=None)
+        await bot.send_message(call.from_user.id, "Name не найдена")
 
 
-async def bento_tort_ukr_assort(call: CallbackQuery) -> None:
-    if call.data == 'bukr_Wanilia':
-        await call.message.edit_reply_markup(reply_markup=zakaz.language_zakaz.zakaz_ukr(call))
-    elif call.data == 'bukr_Czekolada':
-        await call.message.edit_reply_markup(reply_markup=zakaz.language_zakaz.zakaz_ukr(call))
-    elif call.data == 'bukr_Karamel':
-        await call.message.edit_reply_markup(reply_markup=zakaz.language_zakaz.zakaz_ukr(call))
-    elif call.data == 'bukr_Orzeszki':
-        await call.message.edit_reply_markup(reply_markup=zakaz.language_zakaz.zakaz_ukr(call))
-    elif call.data == 'bukr_Biala':
-        await call.message.edit_reply_markup(reply_markup=zakaz.language_zakaz.zakaz_ukr(call))
+async def bento_ukr_assort(call: CallbackQuery):
+    await bot.answer_callback_query(call.id)
+    id = call.data.replace('bent_ukr_', '')
+    result = sql.callback_bento_ukr(id)
+    if result:
+        name = result[1],
+        description = result[3]
+        price = result[4]
+        text = f'''Описание:\n\n{description}\nЦена: {price}'''
+        await bot.send_message(call.from_user.id, text=text, reply_markup=zakaz.language_zakaz.bzakaz_rus(call))
     else:
-        await call.message.edit_reply_markup(reply_markup=None)
+        await bot.send_message(call.from_user.id, "Name не найдена")
 
-async def mak_ukr_assort(call: CallbackQuery) -> None:
-    if call.data == 'mukr_Snick':
-        await call.message.edit_reply_markup(reply_markup=zakaz.language_zakaz.zakaz_ukr(call))
-    elif call.data == 'mukr_Ferrero':
-        await call.message.edit_reply_markup(reply_markup=zakaz.language_zakaz.zakaz_ukr(call))
-    elif call.data == 'mukr_Bounty':
-        await call.message.edit_reply_markup(reply_markup=zakaz.language_zakaz.zakaz_ukr(call))
-    elif call.data == 'mukr_Raffaello':
-        await call.message.edit_reply_markup(reply_markup=zakaz.language_zakaz.zakaz_ukr(call))
-    elif call.data == 'mukr_Double_karam':
-        await call.message.edit_reply_markup(reply_markup=zakaz.language_zakaz.zakaz_ukr(call))
-    elif call.data == 'mukr_Capuccino_Baileys':
-        await call.message.edit_reply_markup(reply_markup=zakaz.language_zakaz.zakaz_ukr(call))
-    elif call.data == 'mukr_Raf':
-        await call.message.edit_reply_markup(reply_markup=zakaz.language_zakaz.zakaz_ukr(call))
-    elif call.data == 'mukr_DorBlue':
-        await call.message.edit_reply_markup(reply_markup=zakaz.language_zakaz.zakaz_ukr(call))
-    elif call.data == 'mukr_Szkolad_wisznia':
-        await call.message.edit_reply_markup(reply_markup=zakaz.language_zakaz.zakaz_ukr(call))
-    elif call.data == 'mukr_Lavanda_pers':
-        await call.message.edit_reply_markup(reply_markup=zakaz.language_zakaz.zakaz_ukr(call))
-    elif call.data == 'mukr_Chiz_golub':
-        await call.message.edit_reply_markup(reply_markup=zakaz.language_zakaz.zakaz_ukr(call))
-    elif call.data == 'mukr_Klubnika_szejk':
-        await call.message.edit_reply_markup(reply_markup=zakaz.language_zakaz.zakaz_ukr(call))
-    elif call.data == 'mukr_Laim_klubnika':
-        await call.message.edit_reply_markup(reply_markup=zakaz.language_zakaz.zakaz_ukr(call))
-    elif call.data == 'mukr_Szokolad_banan':
-        await call.message.edit_reply_markup(reply_markup=zakaz.language_zakaz.zakaz_ukr(call))
-    elif call.data == 'mukr_Fistaszka':
-        await call.message.edit_reply_markup(reply_markup=zakaz.language_zakaz.zakaz_ukr(call))
-    elif call.data == 'mukr_Plombir':
-        await call.message.edit_reply_markup(reply_markup=zakaz.language_zakaz.zakaz_ukr(call))
-    elif call.data == 'mukr_Limon':
-        await call.message.edit_reply_markup(reply_markup=zakaz.language_zakaz.zakaz_ukr(call))
+
+async def mak_ukr_assort(call: CallbackQuery):
+    await bot.answer_callback_query(call.id)
+    id = call.data.replace('mak_ukr_', '')
+    result = sql.callback_mak_ukr(id)
+    if result:
+        name = result[1],
+        description = result[3]
+        price = result[4]
+        text = f'''Описание:\n\n{description}\nЦена: {price}'''
+        await bot.send_message(call.from_user.id, text=text, reply_markup=zakaz.language_zakaz.mzakaz_ukr(call))
     else:
-        await call.message.edit_reply_markup(reply_markup=None)
+        await bot.send_message(call.from_user.id, "Name не найдена")
 
 
 def register_callback(dp: Dispatcher):
-    dp.register_callback_query_handler(ukr_assort, lambda callback_query: callback_query.data.startswith('ukr'))
-    dp.register_callback_query_handler(tort_rus_assort, lambda callback_query: callback_query.data.startswith('tukr'))
-    dp.register_callback_query_handler(bento_tort_ukr_assort, lambda callback_query: callback_query.data.startswith('bukr'))
-    dp.register_callback_query_handler(mak_ukr_assort, lambda callback_query: callback_query.data.startswith('mukr'))
+    dp.register_callback_query_handler(ukr_assort,
+                                       lambda callback_query: callback_query.data.startswith('ukr'))
+    dp.register_callback_query_handler(torty_ukr_assort,
+                                       lambda callback_query: callback_query.data.startswith('tort_ukr_'))
+    dp.register_callback_query_handler(bento_ukr_assort,
+                                       lambda callback_query: callback_query.data.startswith('bent_ukr_'))
+    dp.register_callback_query_handler(mak_ukr_assort,
+                                       lambda callback_query: callback_query.data.startswith('mak_ukr_'))

@@ -12,8 +12,39 @@ def sql_connect():
         print('Ошибка подключения SQL')
 
 
-def get():
-    result = cursor.execute(f'SELECT product_price FROM products WHERE product_id = {id}').fetchone()[0]
+def callback_cakes_rus(id):
+    query = "SELECT * FROM cakes WHERE callback = :id"
+    result = cursor.execute(query, {"id": id}).fetchone()
+    return result
+
+
+def callback_bento_rus(id):
+    query = "SELECT * FROM bent WHERE callback = :id"
+    result = cursor.execute(query, {"id": id}).fetchone()
+    return result
+
+
+def callback_mak_rus(id):
+    query = "SELECT * FROM makaron WHERE callback = :id"
+    result = cursor.execute(query, {"id": id}).fetchone()
+    return result
+
+
+def callback_cakes_ukr(id):
+    query = "SELECT * FROM cakes_ukr WHERE callback = :id"
+    result = cursor.execute(query, {"id": id}).fetchone()
+    return result
+
+
+def callback_bento_ukr(id):
+    query = "SELECT * FROM bent_ukr WHERE callback = :id"
+    result = cursor.execute(query, {"id": id}).fetchone()
+    return result
+
+
+def callback_mak_ukr(id):
+    query = "SELECT * FROM makaron_ukr WHERE callback = :id"
+    result = cursor.execute(query, {"id": id}).fetchone()
     return result
 
 

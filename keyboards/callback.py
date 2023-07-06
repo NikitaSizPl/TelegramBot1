@@ -36,25 +36,25 @@ async def cancel_back(call: CallbackQuery) -> None:
     elif call.data == 'back_torty_ukr':
         await call.message.edit_reply_markup(reply_markup=menu_ukr.torty_assort_ukr())
     elif call.data == 'back_torty_pl':
-        await call.message.edit_reply_markup(reply_markup=menu.language_assort_torty.torty_assort_pl(call))
+        await call.message.edit_reply_markup(reply_markup=menu.language_assort.pod_menu_eng())
     elif call.data == 'back_torty_eng':
-        await call.message.edit_reply_markup(reply_markup=menu.language_assort_torty.torty_assort_eng(call))
+        await call.message.edit_reply_markup(reply_markup=menu.language_assort.pod_menu_eng())
     elif call.data == 'back_btorty_rus':
-        await call.message.edit_reply_markup(reply_markup=menu.language_assort_bentotorty.bento_torty_rus(call))
+        await call.message.edit_reply_markup(reply_markup=menu_rus.bent_assort_rus())
     elif call.data == 'back_btorty_ukr':
-        await call.message.edit_reply_markup(reply_markup=menu.language_assort_bentotorty.bento_torty_ukr(call))
+        await call.message.edit_reply_markup(reply_markup=menu_ukr.bent_assort_ukr())
     elif call.data == 'back_btorty_pl':
-        await call.message.edit_reply_markup(reply_markup=menu.language_assort_bentotorty.bento_torty_pl(call))
+        await call.message.edit_reply_markup(reply_markup=menu.language_assort.pod_menu_eng())
     elif call.data == 'back_btorty_eng':
-        await call.message.edit_reply_markup(reply_markup=menu.language_assort_bentotorty.bento_torty_eng(call))
+        await call.message.edit_reply_markup(reply_markup=menu.language_assort.pod_menu_eng())
     elif call.data == 'back_mak_rus':
-        await call.message.edit_reply_markup(reply_markup=menu.language_assort_makarony.makarony_rus(call))
+        await call.message.edit_reply_markup(reply_markup=menu_rus.mak_assort_rus())
     elif call.data == 'back_mak_ukr':
-        await call.message.edit_reply_markup(reply_markup=menu.language_assort_makarony.makarony_ukr(call))
+        await call.message.edit_reply_markup(reply_markup=menu_rus.mak_assort_rus())
     elif call.data == 'back_mak_pl':
-        await call.message.edit_reply_markup(reply_markup=menu.language_assort_makarony.makarony_pl(call))
+        await call.message.edit_reply_markup(reply_markup=menu.language_assort.pod_menu_eng())
     elif call.data == 'back_mak_eng':
-        await call.message.edit_reply_markup(reply_markup=menu.language_assort_makarony.makarony_eng(call))
+        await call.message.edit_reply_markup(reply_markup=menu.language_assort.pod_menu_eng())
 
 def register_callback(dp: Dispatcher):
     dp.register_callback_query_handler(call_start_lang, lambda callback_query: callback_query.data.startswith('lang'))
