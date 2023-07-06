@@ -16,6 +16,7 @@ def get():
     result = cursor.execute(f'SELECT product_price FROM products WHERE product_id = {id}').fetchone()[0]
     return result
 
+
 def get_rus_cakes():
     data = cursor.execute('SELECT * FROM cakes').fetchall()
     return data
@@ -43,4 +44,34 @@ def get_ukr_bent():
 
 def get_ukr_mak():
     data = cursor.execute('SELECT * FROM makaron_ukr').fetchall()
+    return data
+
+
+def get_pl_cakes():
+    data = cursor.execute('SELECT * FROM cakes_pl').fetchall()
+    return data
+
+
+def get_pl_bent():
+    data = cursor.execute('SELECT * FROM bent_pl').fetchall()
+    return data
+
+
+def get_pl_mak():
+    data = cursor.execute('SELECT * FROM makaron_pl').fetchall()
+    return data
+
+
+def get_eng_cakes():
+    data = cursor.execute('SELECT * FROM cakes_eng').fetchall()
+    return data
+
+
+def get_eng_bent():
+    data = cursor.execute('SELECT * FROM bent_eng').fetchall()
+    return data
+
+
+def get_eng_mak():
+    data = cursor.execute('SELECT * FROM makaron_eng').fetchall()
     return data

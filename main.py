@@ -11,7 +11,15 @@ async def on_startup(_):
     sql.get_rus_cakes()
     sql.get_rus_bent()
     sql.get_rus_mak()
-
+    sql.get_ukr_mak()
+    sql.get_ukr_bent()
+    sql.get_ukr_mak()
+    sql.get_pl_cakes()
+    sql.get_pl_bent()
+    sql.get_pl_mak()
+    sql.get_eng_mak()
+    sql.get_eng_bent()
+    sql.get_eng_mak()
 
     from handlers import client
     from handlers import admin
