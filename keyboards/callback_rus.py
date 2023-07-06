@@ -1,5 +1,3 @@
-import types
-
 from aiogram import Dispatcher
 from aiogram.types import CallbackQuery
 
@@ -24,11 +22,13 @@ async def torty_rus_assort(call: CallbackQuery):
     id = call.data.replace('tort_rus_', '')
     result = sql.callback_cakes_rus(id)
     if result:
-        name = result[1],
+        foto = open(f'{result[5]}{id}.jpg', 'rb')
+        name = result[1]
         description = result[3]
         price = result[4]
-        text = f'''Описание:\n\n{description}\nЦена: {price}'''
-        await bot.send_message(call.from_user.id, text=text, reply_markup=zakaz.language_zakaz.zakaz_rus(call))
+        text = f'''{name}\n\nОписание:\n\n{description}\nЦена: {price}'''
+        await bot.send_photo(call.from_user.id, photo=foto, caption=text,
+                             reply_markup=zakaz.language_zakaz.zakaz_rus(call))
     else:
         await bot.send_message(call.from_user.id, "Name не найдена")
 
@@ -38,11 +38,13 @@ async def bento_rus_assort(call: CallbackQuery):
     id = call.data.replace('bent_rus_', '')
     result = sql.callback_bento_rus(id)
     if result:
-        name = result[1],
+        foto = open(f'{result[5]}{id}.jpg', 'rb')
+        name = result[1]
         description = result[3]
         price = result[4]
-        text = f'''Описание:\n\n{description}\nЦена: {price}'''
-        await bot.send_message(call.from_user.id, text=text, reply_markup=zakaz.language_zakaz.bzakaz_rus(call))
+        text = f'''{name}\n\nОписание:\n\n{description}\nЦена: {price}'''
+        await bot.send_photo(call.from_user.id, photo=foto, caption=text,
+                             reply_markup=zakaz.language_zakaz.zakaz_rus(call))
     else:
         await bot.send_message(call.from_user.id, "Name не найдена")
 
@@ -52,11 +54,13 @@ async def mak_rus_assort(call: CallbackQuery):
     id = call.data.replace('mak_rus_', '')
     result = sql.callback_mak_rus(id)
     if result:
-        name = result[1],
+        foto = open(f'{result[5]}{id}.jpg', 'rb')
+        name = result[1]
         description = result[3]
         price = result[4]
-        text = f'''Описание:\n\n{description}\nЦена: {price}'''
-        await bot.send_message(call.from_user.id, text=text, reply_markup=zakaz.language_zakaz.mzakaz_rus(call))
+        text = f'''{name}\n\nОписание:\n\n{description}\nЦена: {price}'''
+        await bot.send_photo(call.from_user.id, photo=foto, caption=text,
+                             reply_markup=zakaz.language_zakaz.zakaz_rus(call))
     else:
         await bot.send_message(call.from_user.id, "Name не найдена")
 
