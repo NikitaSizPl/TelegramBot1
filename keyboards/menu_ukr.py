@@ -16,7 +16,7 @@ def bent_assort_ukr() -> InlineKeyboardMarkup:
     btn_assort = InlineKeyboardMarkup(row_width=1)
     btn_back = InlineKeyboardButton(text='Назад ↩️', callback_data='back_assort_ukr')
     for i in sql.get_ukr_bent():
-        btn_assort.add(InlineKeyboardButton(f'{i[1]}', callback_data=f'bento_ukr_{i[2]}'))
+        btn_assort.add(InlineKeyboardButton(f'{i[1]}', callback_data=f'bent_ukr_{i[2]}'))
     btn_assort.add(btn_back)
     return btn_assort
 

@@ -22,11 +22,13 @@ async def torty_ukr_assort(call: CallbackQuery):
     id = call.data.replace('tort_ukr_', '')
     result = sql.callback_cakes_ukr(id)
     if result:
-        name = result[1],
+        foto = open(f'{result[5]}{id}.jpg', 'rb')
+        name = result[1]
         description = result[3]
         price = result[4]
-        text = f'''Описание:\n\n{description}\nЦена: {price}'''
-        await bot.send_message(call.from_user.id, text=text, reply_markup=zakaz.language_zakaz.zakaz_ukr(call))
+        text = f'''{name}\n\n{description}\n\nЦена: {price} zl/kg'''
+        await bot.send_photo(call.from_user.id, photo=foto, caption=text,
+                             reply_markup=zakaz.language_zakaz.zakaz_ukr(call), parse_mode='HTML')
     else:
         await bot.send_message(call.from_user.id, "Name не найдена")
 
@@ -36,11 +38,13 @@ async def bento_ukr_assort(call: CallbackQuery):
     id = call.data.replace('bent_ukr_', '')
     result = sql.callback_bento_ukr(id)
     if result:
-        name = result[1],
+        foto = open(f'{result[5]}{id}.jpg', 'rb')
+        name = result[1]
         description = result[3]
         price = result[4]
-        text = f'''Описание:\n\n{description}\nЦена: {price}'''
-        await bot.send_message(call.from_user.id, text=text, reply_markup=zakaz.language_zakaz.bzakaz_rus(call))
+        text = f'''{name}\n\n{description}\n\nЦена: {price} zl'''
+        await bot.send_photo(call.from_user.id, photo=foto, caption=text,
+                             reply_markup=zakaz.language_zakaz.bzakaz_ukr(call), parse_mode='HTML')
     else:
         await bot.send_message(call.from_user.id, "Name не найдена")
 
@@ -50,11 +54,13 @@ async def mak_ukr_assort(call: CallbackQuery):
     id = call.data.replace('mak_ukr_', '')
     result = sql.callback_mak_ukr(id)
     if result:
-        name = result[1],
+        foto = open(f'{result[5]}{id}.jpg', 'rb')
+        name = result[1]
         description = result[3]
         price = result[4]
-        text = f'''Описание:\n\n{description}\nЦена: {price}'''
-        await bot.send_message(call.from_user.id, text=text, reply_markup=zakaz.language_zakaz.mzakaz_ukr(call))
+        text = f'''{name}\n\n{description}\n\nЦена: {price} zl/szt'''
+        await bot.send_photo(call.from_user.id, photo=foto, caption=text,
+                             reply_markup=zakaz.language_zakaz.mzakaz_ukr(call), parse_mode='HTML')
     else:
         await bot.send_message(call.from_user.id, "Name не найдена")
 
