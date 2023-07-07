@@ -48,6 +48,24 @@ def callback_mak_ukr(id):
     return result
 
 
+def callback_cakes_pl(id):
+    query = "SELECT * FROM cakes_pl WHERE callback = :id"
+    result = cursor.execute(query, {"id": id}).fetchone()
+    return result
+
+
+def callback_bento_pl(id):
+    query = "SELECT * FROM bent_pl WHERE callback = :id"
+    result = cursor.execute(query, {"id": id}).fetchone()
+    return result
+
+
+def callback_mak_pl(id):
+    query = "SELECT * FROM makaron_pl WHERE callback = :id"
+    result = cursor.execute(query, {"id": id}).fetchone()
+    return result
+
+
 def get_rus_cakes():
     data = cursor.execute('SELECT * FROM cakes').fetchall()
     return data

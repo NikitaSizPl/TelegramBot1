@@ -54,9 +54,37 @@ class language_zakaz:
         self.zakaz.add(btn_zakaz, btn_back)
         return self.zakaz
 
+    def bzakaz_pl(self) -> InlineKeyboardMarkup:
+        self.zakaz = InlineKeyboardMarkup(row_width=1)
+        btn_zakaz = InlineKeyboardButton(text='Zamówić', callback_data='nn')
+        btn_back = InlineKeyboardButton(text='Powrót ↩️', callback_data='back_btorty_pl')
+        self.zakaz.add(btn_zakaz, btn_back)
+        return self.zakaz
+
+    def mzakaz_pl(self) -> InlineKeyboardMarkup:
+        self.zakaz = InlineKeyboardMarkup(row_width=1)
+        btn_zakaz = InlineKeyboardButton(text='Zamówić', callback_data='nn')
+        btn_back = InlineKeyboardButton(text='Powrót ↩️', callback_data='back_mak_pl')
+        self.zakaz.add(btn_zakaz, btn_back)
+        return self.zakaz
+
     def zakaz_eng(self) -> InlineKeyboardMarkup:
         self.zakaz = InlineKeyboardMarkup(row_width=1)
         btn_zakaz = InlineKeyboardButton(text='Order', callback_data='nn')
         btn_back = InlineKeyboardButton(text='Back ↩️', callback_data='back_torty_eng')
+        self.zakaz.add(btn_zakaz, btn_back)
+        return self.zakaz
+
+    def bzakaz_eng(self) -> InlineKeyboardMarkup:
+        self.zakaz = InlineKeyboardMarkup(row_width=1)
+        btn_zakaz = InlineKeyboardButton(text='Order', callback_data='nn')
+        btn_back = InlineKeyboardButton(text='Back ↩️', callback_data='back_btorty_eng')
+        self.zakaz.add(btn_zakaz, btn_back)
+        return self.zakaz
+
+    def mzakaz_eng(self) -> InlineKeyboardMarkup:
+        self.zakaz = InlineKeyboardMarkup(row_width=1)
+        btn_zakaz = InlineKeyboardButton(text='Order', callback_data='nn')
+        btn_back = InlineKeyboardButton(text='Back ↩️', callback_data='back_mak_eng')
         self.zakaz.add(btn_zakaz, btn_back)
         return self.zakaz
