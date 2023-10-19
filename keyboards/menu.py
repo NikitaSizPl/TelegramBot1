@@ -6,8 +6,8 @@ def start_lang() -> InlineKeyboardMarkup:
     btn_rus = InlineKeyboardButton(text='Русский 🇷🇺', callback_data='lang_btn_rus')
     btn_urk = InlineKeyboardButton(text='Український 🇺🇦', callback_data='lang_btn_ukr')
     btn_pl = InlineKeyboardButton(text='Polski 🇵🇱', callback_data='lang_btn_pl')
-    btn_eng = InlineKeyboardButton(text='English 🇬🇧', callback_data='lang_btn_eng')
-    lang_menu.add(btn_rus, btn_urk, btn_pl, btn_eng)
+    #btn_eng = InlineKeyboardButton(text='English 🇬🇧', callback_data='lang_btn_eng')
+    lang_menu.add(btn_rus, btn_urk, btn_pl)
     return lang_menu
 
 

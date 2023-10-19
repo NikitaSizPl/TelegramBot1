@@ -22,6 +22,7 @@ async def on_startup(_):
     sql.get_eng_mak()
 
     from handlers import client
+    from handlers import other
     from handlers import admin
     from keyboards import callback
     from keyboards import callback_rus
@@ -30,6 +31,7 @@ async def on_startup(_):
     from keyboards import callback_eng
 
     client.register_handler_client(dp)
+    other.register_handler_client(dp)
     admin.register_handler_client(dp)
     callback.register_callback(dp)
     callback_rus.register_callback(dp)

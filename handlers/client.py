@@ -12,8 +12,7 @@ async def send_welcome(message: types.Message):
     # user_name = message.from_user.first_name
     await bot.send_message(message.from_user.id, f"Для продолжения выберите язык\n\n"
                                                  f"Для продовження виберіть мову\n\n"
-                                                 f"Aby kontynuować, wybierz język\n\n"
-                                                 f"To continue, select the language\n\n",
+                                                 f"Aby kontynuować, wybierz język\n\n",
 
                            reply_markup=menu.start_lang())
 
