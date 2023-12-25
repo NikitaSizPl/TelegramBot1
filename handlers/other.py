@@ -42,7 +42,7 @@ async def order_info(message: types.Message, state: FSMContext):
 
     # Показываем данные заказа и спрашиваем, подтверждает ли он его
     data = await state.get_data()
-    confirmation_message = f"instagram: {data['insta']}\nДоставка: {data['deleviri']}\nДополнительно: {data['info']}\n\nПодтверждаете заказ?"
+    confirmation_message = f"instagram: {data['insta']}\nДоставка: {data['deleviri']}\nДополнительно: \n{data['info']}\n\nПодтверждаете заказ?"
     await message.reply(confirmation_message,
                         reply_markup=types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True, keyboard=[
                             [types.KeyboardButton('Да'), types.KeyboardButton('Нет')]
