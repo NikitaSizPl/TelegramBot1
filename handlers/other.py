@@ -7,6 +7,7 @@ from aiogram.contrib.fsm_storage.memory import MemoryStorage
 
 storage = MemoryStorage()
 
+global insta, deleviri, info, chat_id_nikita
 
 # Описываем состояния
 class OrderState(StatesGroup):
@@ -60,26 +61,26 @@ async def order_info(message: types.Message, state: FSMContext):
                             [types.KeyboardButton('Да'), types.KeyboardButton('Нет')]
                         ]))
 
-    async def order_finish(message: types.Message, state: FSMContext):
-        # Получаем ответ пользователя и обрабатываем его
-        if message.text == 'Да':
-            # Если заказ подтвержден, отправляем сообщение об успешном оформлении заказа
-            await message.reply("Ваш заказ успешно оформлен!")
-        else:
-            # Если заказ не подтвержден, отправляем сообщение о том, что заказ отменен
-            await message.reply("Ваш заказ отменен.")
+async def order_finish(message: types.Message, state: FSMContext):
+    # Получаем ответ пользователя и обрабатываем его
+    if message.text == 'Да':
+        # Если заказ подтвержден, отправляем сообщение об успешном оформлении заказа
+        await message.reply("Ваш заказ успешно оформлен!")
+    else:
+        # Если заказ не подтвержден, отправляем сообщение о том, что заказ отменен
+        await message.reply("Ваш заказ отменен.")
 
-        # Сбрасываем состояние
-        await state.finish()
+    # Сбрасываем состояние
+    await state.finish()
 
-    # text = f" Новый заказ:\n\ninstagram: {insta}\n\nДоставка: {deleviri}\n\nДоп. инф: {info}"
-    # await bot.send_message(chat_id_nikita, text)
+    text = f" Новый заказ:\n\ninstagram: {insta}\n\nДоставка: {deleviri}\n\nДоп. инф: {info}"
+    await bot.send_message(chat_id_nikita, text)
 
     # Очищаем состояние FSM
-    # await state.finish()
+    await state.finish()
 
     # Отправляем пользователю подтверждение о успешном оформлении заказа
-    # await message.answer("Ваш заказ успешно оформлен.")
+    await message.answer("Ваш заказ успешно оформлен.")
 
 
 def register_handler_client(dp: Dispatcher):
