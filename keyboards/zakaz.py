@@ -7,23 +7,24 @@ class language_zakaz:
 
     def zakaz_rus(self) -> InlineKeyboardMarkup:
         self.zakaz = InlineKeyboardMarkup(row_width=1)
-        btn_zakaz = InlineKeyboardButton(text='Заказать', callback_data='callback_order')
+        btn_zakaz = InlineKeyboardButton(text='Заказать', callback_data='new_order')
+
         btn_back = InlineKeyboardButton(text='Назад ↩️', callback_data='back_torty_rus')
         self.zakaz.add(btn_zakaz, btn_back)
         return self.zakaz
 
     def bzakaz_rus(self) -> InlineKeyboardMarkup:
         self.zakaz = InlineKeyboardMarkup(row_width=1)
-        # btn_zakaz = InlineKeyboardButton(text='Заказать', callback_data='nn')
+        btn_zakaz = InlineKeyboardButton(text='Заказать', callback_data='new_order')
         btn_back = InlineKeyboardButton(text='Назад ↩️', callback_data='back_btorty_rus')
-        self.zakaz.add(btn_back)
+        self.zakaz.add(btn_zakaz, btn_back)
         return self.zakaz
 
     def mzakaz_rus(self) -> InlineKeyboardMarkup:
         self.zakaz = InlineKeyboardMarkup(row_width=1)
-        # btn_zakaz = InlineKeyboardButton(text='Заказать', callback_data='nn')
+        btn_zakaz = InlineKeyboardButton(text='Заказать', callback_data='new_order')
         btn_back = InlineKeyboardButton(text='Назад ↩️', callback_data='back_mak_rus')
-        self.zakaz.add(btn_back)
+        self.zakaz.add(btn_zakaz, btn_back)
         return self.zakaz
 
     def zakaz_ukr(self) -> InlineKeyboardMarkup:

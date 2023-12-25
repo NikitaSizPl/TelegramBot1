@@ -29,6 +29,7 @@ async def on_startup(_):
     from keyboards import callback_ukr
     from keyboards import callback_pl
     from keyboards import callback_eng
+    from keyboards import callback_order
 
     client.register_handler_client(dp)
     other.register_handler_client(dp)
@@ -38,6 +39,8 @@ async def on_startup(_):
     callback_ukr.register_callback(dp)
     callback_pl.register_callback(dp)
     callback_eng.register_callback(dp)
+    callback_order.register_callback(dp)
+
 
 
 # Запуск бота
