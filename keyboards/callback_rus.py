@@ -27,9 +27,9 @@ async def torty_rus_assort(call: CallbackQuery) -> None:
         description = result[3]
         price = result[4]
         text = f'''{name}\n\n{description}\n\nЦена: {price} zl/kg'''
-        #await bot.send_photo(call.from_user.id, photo=foto, caption=text,
-                             #reply_markup=zakaz.language_zakaz.zakaz_rus(call), parse_mode='HTML')
-        await bot.send_message(call.from_user.id, text=text, reply_markup=zakaz.language_zakaz.zakaz_rus(call), parse_mode='HTML')
+        await bot.send_photo(call.from_user.id, photo=foto, caption=text, reply_markup=zakaz.language_zakaz.zakaz_rus(call), parse_mode='HTML')
+        #await bot.send_message(call.from_user.id, text=text, reply_markup=zakaz.language_zakaz.zakaz_rus(call),
+        # parse_mode='HTML')
     else:
         await bot.send_message(call.from_user.id, "Name не найдена")
 
