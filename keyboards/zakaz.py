@@ -8,7 +8,6 @@ class language_zakaz:
     def zakaz_rus(self) -> InlineKeyboardMarkup:
         self.zakaz = InlineKeyboardMarkup(row_width=1)
         btn_zakaz = InlineKeyboardButton(text='Заказать', callback_data='new_order')
-
         btn_back = InlineKeyboardButton(text='Назад ↩️', callback_data='back_torty_rus')
         self.zakaz.add(btn_zakaz, btn_back)
         return self.zakaz

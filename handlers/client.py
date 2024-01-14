@@ -2,8 +2,7 @@ from aiogram import types, Dispatcher
 from create_bot import bot
 from keyboards import menu
 
-start_text = """Здравствуйте, Вы используете Plaisir_bot
-
+start_text = """
 Для продолжения выберите язык
 Для продовження виберіть мову
 Aby kontynuować, wybierz język"""

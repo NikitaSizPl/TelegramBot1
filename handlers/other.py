@@ -4,8 +4,8 @@ from aiogram.dispatcher.filters.state import State, StatesGroup
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from create_bot import bot
 
-storage = MemoryStorage()
 
+storage = MemoryStorage()
 
 # Описываем состояния
 class OrderState(StatesGroup):

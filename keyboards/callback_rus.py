@@ -1,9 +1,9 @@
 from aiogram import Dispatcher
 from aiogram.types import CallbackQuery
-
-from create_bot import bot
+from create_bot import bot, dp
 from data_base import sql
 from keyboards import menu_rus, zakaz
+from keyboards.menu_rus import torty_assort_rus
 
 
 async def rus_assort(call: CallbackQuery) -> None:
@@ -17,7 +17,7 @@ async def rus_assort(call: CallbackQuery) -> None:
         await call.message.edit_reply_markup(reply_markup=None)
 
 
-async def torty_rus_assort(call: CallbackQuery):
+async def torty_rus_assort(call: CallbackQuery) -> None:
     await bot.answer_callback_query(call.id)
     id = call.data.replace('tort_rus_', '')
     result = sql.callback_cakes_rus(id)
@@ -27,8 +27,9 @@ async def torty_rus_assort(call: CallbackQuery):
         description = result[3]
         price = result[4]
         text = f'''{name}\n\n{description}\n\nЦена: {price} zl/kg'''
-        await bot.send_photo(call.from_user.id, photo=foto, caption=text,
-                             reply_markup=zakaz.language_zakaz.zakaz_rus(call), parse_mode='HTML')
+        #await bot.send_photo(call.from_user.id, photo=foto, caption=text,
+                             #reply_markup=zakaz.language_zakaz.zakaz_rus(call), parse_mode='HTML')
+        await bot.send_message(call.from_user.id, text=text, reply_markup=zakaz.language_zakaz.zakaz_rus(call), parse_mode='HTML')
     else:
         await bot.send_message(call.from_user.id, "Name не найдена")
 
